@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react';
 
-function Item({ name, category }) {
+const Item = ({ item, onAddToCart }) => {
+  const handleButtonClick = () => {
+    onAddToCart(item.id);
+  };
+
   return (
-    <li className="">
-      <span>{name}</span>
-      <span className="category">{category}</span>
-      <button className="add">Add to Cart</button>
+    <li className={item.inCart ? 'in-cart' : ''}>
+      {item.name}
+      <button onClick={handleButtonClick}>
+        {item.inCart ? 'Remove From Cart' : 'Add to Cart'}
+      </button>
     </li>
   );
-}
+};
 
 export default Item;
